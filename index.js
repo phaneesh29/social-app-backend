@@ -39,7 +39,7 @@ app.post("/api/posts", upload.single("file"), async (req, res) => {
     try {
 
         const { title, content } = req.body
-        const file = req.file
+        const file = req.file ? req.file.filename : undefined;
 
         if (!title || !content) {
             res.status(400).json({
